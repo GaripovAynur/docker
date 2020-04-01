@@ -1,0 +1,56 @@
+
+
+
+
+
+sudo usermod -aG docker $USER
+ 
+>>>logout/login<<<
+
+docker run hello-world					#Проверка корректности работы после установки
+
+
+docker -v						#Версия Docker Engine
+docker ps						#Список Бегущих контейнеров
+docket ps -a						#Список ВСЕХ контейнеров
+docker images						#Список локальных Images
+
+docker start @NAMES@					#Запуск контйнера по имени "в конце"
+docker stop @NAMES@ 					#Стоп  контйнера по имени "в конце"
+
+docker inspect @NAMES@ 					#Полная информация по контейнеру
+docker diif @NAMES@ 					#Показывает список измененных данных в работающим контейнере
+docker logs @NAMES@					#Список всех событий
+docker rm -v $(docker ps -aq -f status=exited)		#Удалить все остановленные контейнеры
+	
+docker search tomcat					#Найти Image tomcat в DockerHub
+docker pull tomcat					#Скачать Image tomcat из DockerHub
+docker run -it -p 7777:8080 tomcat			#Запустить интерактивно контейнер  tomcat на порте 7777
+docker run -d -p 8888:8080 tomcat			#Запустить НЕинтерактивно контейнер  tomcat на порте 8888
+docker run -d -p 80:80 nginx				#Запустить НЕинтерактивно контейнер  nginx на порте 80
+	
+docker tag oldname:v1  newname:v2			#Создать копию Image с другим именем и тагом
+	
+docker build -t myimage:latest .			#Создать Image с именем myimage:latest из локального Dockerfile
+docker run -d myimage:latest				#Запустить НЕинтерактивно контейнер myimage:latest
+		
+docker rm 1234567890					#Удалить контейнер с ID 1234567890
+docker rmi 1112227778					#Удалит локальный Image с ID 1112227778
+	
+docker exec -it 5267e21d140 /bin/bash			#Запустить интерактивно /bin/bash на контейнере с ID 5267e21d140, перед установкой не забудь update
+exit							#Выйти из контейнера
+docker commit 5267e21d140  newimage_v2:latest		#Создать Image с именем newimage_v2:latest из контейнера с ID 5267e21d140
+
+
+ln -s /usr/games/cowsay /usr/bin/cowsay 		#Cимвольная ссылка для запуска cowsay
+
+
+
+
+
+
+
+
+
+
+
