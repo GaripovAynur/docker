@@ -1,0 +1,3 @@
+docker run --name MyNameDB! -e MYSQL_ROOT_PASSWORD=123456 -d mariadb	# Устанавливаем mariadb, с названием БД и с паролем
+
+docker run --link MyNameDB!:db -p 8080:8080 adminer						# Важно указать название БД в соответствии mariadb
