@@ -1,0 +1,2 @@
+docker-compose -f stack.yml up -d
+docker exec -it distr_db_1 service zabbix-agent start

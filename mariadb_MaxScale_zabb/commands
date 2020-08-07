@@ -1,0 +1,71 @@
+
+#####################Zabbix#######################
+
+CREATE USER 'zbx_monitor'@'localhost' IDENTIFIED BY '*******';
+GRANT USAGE,REPLICATION CLIENT,PROCESS,SHOW DATABASES,SHOW VIEW,REPLICATION SLAVE ADMIN ON *.* TO 'zbx_monitor'@'localhost';
+
+
+CREATE USER 'zbx_monitor'@'10.1.0.228' IDENTIFIED BY '*******';
+GRANT USAGE,REPLICATION CLIENT,PROCESS,SHOW DATABASES,SHOW VIEW ON *.* TO 'zbx_monitor'@'10.1.0.228';
+
+################REPLICATION master##################
+
+CREATE USER replica@'169.254.99.%' IDENTIFIED BY '*******';
+grant replication slave, replication client on *.* to replica@'169.254.99.%' identified by '*******';
+
+
+################REPLICATION slave##################
+
+CREATE USER replica@'169.254.99.%' IDENTIFIED BY '*******';
+grant replication slave, replication client on *.* to replica@'169.254.99.%' identified by '*******';
+
+stop slave;
+reset slave;
+change master to master_host='169.254.99.1',
+    master_user='replica', 
+    master_password='*******',
+    master_log_file='mariadb-bin.000173',
+    master_log_pos=1417;
+start slave;
+show slave status \G;
+
+-------пропустить ошибку-----------
+
+STOP SLAVE;
+SET GLOBAL sql_slave_skip_counter=1;
+START SLAVE;
+show slave status \G;
+
+
+
+################MAXSCALE#################
+
+CREATE USER 'maxuser'@'169.254.99.4' IDENTIFIED BY '*******';
+GRANT ALL ON *.* TO 'maxuser'@'169.254.99.4' WITH GRANT OPTION;
+
+
+CREATE USER 'maxuser'@'10.4.0.10' IDENTIFIED BY '*******';
+GRANT ALL ON *.* TO 'maxuser'@'10.4.0.10' WITH GRANT OPTION;
+
+maxctrl list servers
+maxctrl list services            
+maxctrl list monitors             
+maxctrl list sessions            
+maxctrl list filters 
+maxctrl list modules 
+maxctrl list threads
+maxctrl list users 
+maxctrl list commands
+maxctrl list listeners <service>  List listeners of a service
+
+################CREATE USER################
+
+CREATE USER aynur@'169.254.99.4' IDENTIFIED BY '*******';
+grant all on *.* to aynur@169.254.99.4 identified by '*******';
+
+CREATE USER aynur@'10.7.5.62' IDENTIFIED BY '*******';
+grant all on *.* to aynur@10.7.5.62 identified by '*******';
+
+
+
+

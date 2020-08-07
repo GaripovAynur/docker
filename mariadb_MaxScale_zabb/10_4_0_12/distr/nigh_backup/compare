@@ -1,0 +1,17 @@
+#!/bin/bash
+
+today=`date +"%u"`
+
+yestoday="0"
+temp="0"
+
+if test "$today" = "1"
+then
+  $yestoday=`ls -l /ftpdata/day_7 | awk 'BEGIN {n=0} {n=n+$5} END {print n}'`
+else
+  $temp = $today-1
+  $yestoday=`ls -l /ftpdata/$temp | awk 'BEGIN {n=0} {n=n+$5} END {print n}'` 
+fi
+today=`ls -l /ftpdata/$today | awk 'BEGIN {n=0} {n=n+$5} END {print n}'` 
+echo "today = $today"
+echo "yestoday = $yestoday"

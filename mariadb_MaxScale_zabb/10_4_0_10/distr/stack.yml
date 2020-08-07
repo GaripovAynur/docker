@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  maxscale:
+        # image: v23_for_exemple_mariadb/maxscale
+        image: mariadb/maxscale
+        volumes:
+            - ./maxscale.cnf.d:/etc/maxscale.cnf.d
+        ports:
+            - "3306:3306"  # readwrite port
+            - "3307:3307"  # readonly port
+ 

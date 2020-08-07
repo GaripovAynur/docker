@@ -1,0 +1,1 @@
+mount -t cifs //10.1.0.69/SBR /ftpdata -o username=*****,password=******,gid=mysql,uid=polkitd,rw;

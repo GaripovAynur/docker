@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ddd=$(date +"%u")
+now=$(date +"%m-%d-%y")
+docker container exec  distr_db_1  /bin/bash -c /var/lib/mysql/test.sh
+mkdir -p /ftpdata/nigh_$ddd
+rm /ftpdata/nigh_$ddd/*
+mv /dbdata/dump.gz /ftpdata/nigh_$ddd/dump.gz
+date >> /dbdata/rezerv_log_$now
+mv /dbdata/rezerv_log_$now /ftpdata/nigh_$ddd/rezerv_log_$now
+
+
