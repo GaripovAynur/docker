@@ -33,9 +33,9 @@ enforce_read_only_slaves=1
 type=service
 router=readconnroute
 servers=kz-sbr-m,kz-sbr-1s,kz-sbr-2s
-user=maxuser
+user=*******
 password=*******
-router_options=*****
+router_options==slave
 
 [Read-Write-Service]
 type=service
