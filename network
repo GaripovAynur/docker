@@ -4,6 +4,8 @@ docker network rm my-net    #удалить определённую польз�
 docker network create my-net  #Создание определяемой пользователем сети bridge
 docker network create -d macvlan --subnet=10.0.2.15/24 --gateway=10.0.2.1 -o parent=enp0s3 pub_net
 docker network ls
+docker network connect my-net my-nginx      #Подключить контейнер к сети
+docker network disconnect my-net my-nginx   #Отключить контейнер от сети
 
 ########################Сеть macvlan###########################
 #Режим bridge
