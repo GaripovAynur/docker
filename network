@@ -1,0 +1,17 @@
+
+docker network create --help  #Подсказку можно посмотреть через команду
+docker network rm my-net    #удалить определённую пользователем мостовую сеть
+docker network create my-net  #Создание определяемой пользователем сети bridge
+docker network create -d macvlan --subnet=10.0.2.15/24 --gateway=10.0.2.1 -o parent=enp0s3 pub_net
+docker network ls
+
+########################Сеть macvlan###########################
+#Режим bridge
+$ docker network create -d macvlan --subnet=172.16.86.0/24 --gateway=172.16.86.1 -o parent=eth0 pub_net
+#Режим bridge с исключением IP-адресов
+$ docker network create -d macvlan --subnet=192.168.32.0/24 --ip-range=192.168.32.128/25 --gateway=192.168.32.254 --aux-address="my-router=192.168.32.129" -o parent=eth0 macnet32
+#Режим bridge 802.1q
+$ docker network create -d macvlan --subnet=192.168.50.0/24 --gateway=192.168.50.1 -o parent=eth0.50 macvlan50
+#Использование ipvlan вместо macvlan
+$ docker network create -d ipvlan --subnet=192.168.210.0/24 --subnet=192.168.212.0/24 --gateway=192.168.210.254 --gateway=192.168.212.254 -o ipvlan_mode=l2 -o parent=eth0 ipvlan210
+
