@@ -37,8 +37,11 @@ docker rm -v $(docker ps -aq -f status=exited)		#Удалить все оста�
 docker login username darkbenladan --password password 	#Логинимся по логину и паролю, которые мы создали на hub.docker.com ранее
 docker save 3c156928aeec > start.tar 			#Сохраняем локально наш контейнер, теперь мы можем его перенести куда угодно
 docker load < start.tar 				#Мы вернули наш контейнер
-
 docker login kz-git-001.adm.local
+
+docker volume create my_volume1					  # Созадать docker volume			
+docker run -d -v my_volume1:/app/data --name python1 b5558ad5822e # Присоединить volume
+
 
 
 docker exec -it 5267e21d140 /bin/bash			#Запустить интерактивно /bin/bash на контейнере с ID 5267e21d140, перед установкой не забудь update
