@@ -66,6 +66,13 @@ grant all on *.* to aynur@169.254.99.4 identified by '*******';
 CREATE USER aynur@'10.7.5.62' IDENTIFIED BY '*******';
 grant all on *.* to aynur@10.7.5.62 identified by '*******';
 
+FLUSH TABLES WITH READ LOCK;
+SET GLOBAL read_only = ON;
+show master status;
+SET GLOBAL read_only = OFF;
+UNLOCK TABLES;
+
+show processlist;
 
 
 
