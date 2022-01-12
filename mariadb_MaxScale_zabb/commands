@@ -1,3 +1,7 @@
+#####################Create dump##################
+mysqldump --skip-lock-tables --single-transaction --flush-logs --master-data=2 -A | gzip -c > /var/lib/mysql/kkm_replica_12_01.sql.gz
+zcat /var/lib/mysql/kkm_replica.sql.gz | head -n80 |  grep "MASTER_LOG_POS"
+
 
 #####################Zabbix#######################
 
