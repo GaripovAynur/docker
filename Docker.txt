@@ -58,13 +58,21 @@ docker push kz-git-001.adm.local/a.garipov/sbr
 
 
 docker run -it nginx sh					#Из оболочки можно задавать команды sh 
-/ # ls
-bin   dev   etc   home  proc  root  usr   var
-/ # uptime
- 05:45:21 up  5:58,  load average: 0.00, 0.01, 0.04
+
+### Регистрация и загрузка
+
+vi /etc/docker/daemon.json
+{
+  "insecure-registries":["nexus.innochain.ru:8565"] #Если http
+}
 
 
-
+docker login -u a.gasfin nexus.innochain.ru:8565
+docker tag innochain/dev:22 nexus.innochain.ru:8565/dev:22
+docker push nexus.innochain.ru:8565/dev:22
+docker pull nexus.innochain.ru:8565/dev:22
+	
+	FROM nexus.example.com:18443/nginx
 
 
 
