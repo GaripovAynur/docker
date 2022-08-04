@@ -57,7 +57,7 @@ docker push kz-git-001.adm.local/a.garipov/sbr
 
 
 
-docker run -it nginx sh					#Из оболочки можно задавать команды sh 
+docker run -it nicolaka/netshoot bash					#Из оболочки можно задавать команды sh 
 
 ### Регистрация и загрузка
 
